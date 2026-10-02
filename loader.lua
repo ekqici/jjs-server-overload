@@ -1,4 +1,3 @@
--- Material 3 Language Picker → запускает ТВОЙ скрипт
 
 local Colors = {
     Primary = Color3.fromRGB(208, 188, 255),
@@ -11,22 +10,16 @@ local Colors = {
     OutlineVariant = Color3.fromRGB(73, 69, 79),
 }
 
--- ============================================================
---   ВСТАВЬ СВОЙ СКРИПТ СЮДА
---   ru → что запустится при выборе "Русский"
---   en → что запустится при выборе "English"
--- ============================================================
+
 local MyScripts = {
     ru = [[
-        -- ТВОЙ СКРИПТ для русского
-        loadstring(game:HttpGet("https://example.com/ru_script.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ekqici/jjs-server-overload/refs/heads/main/overloadrus.lua"))()
     ]],
     en = [[
-        -- ТВОЙ СКРИПТ для английского
-        loadstring(game:HttpGet("https://example.com/en_script.lua"))()
+        
     ]],
 }
--- ============================================================
+
 
 local Locales = {
     ru = {
@@ -71,7 +64,6 @@ MainStroke.Color = Colors.OutlineVariant
 MainStroke.Thickness = 1
 MainStroke.Parent = Main
 
--- Крестик
 local CloseBtn = Instance.new("TextButton")
 CloseBtn.Size = UDim2.new(0, 36, 0, 36)
 CloseBtn.Position = UDim2.new(1, -52, 0, 20)
@@ -112,7 +104,7 @@ CloseBtn.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
--- Заголовок
+
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, -100, 0, 30)
 Title.Position = UDim2.new(0, 24, 0, 28)
@@ -235,7 +227,6 @@ local BtnEN = makeLangButton("English", "🇬🇧", "Английский", 2)
 local function launchScript(lang, chosenBtn)
     local t = Locales[lang]
 
-    -- Убираем текст
     TweenService:Create(Title, TweenInfo.new(0.2), { TextTransparency = 1 }):Play()
     TweenService:Create(Subtitle, TweenInfo.new(0.2), { TextTransparency = 1 }):Play()
     TweenService:Create(CloseBtn, TweenInfo.new(0.2), { BackgroundTransparency = 1, TextTransparency = 1 }):Play()
@@ -267,7 +258,7 @@ local function launchScript(lang, chosenBtn)
 
     task.wait(0.5)
 
-    -- === ЗАПУСК ТВОЕГО СКРИПТА ===
+    
     local code = MyScripts[lang]
     if code and code ~= "" then
         local func, err = loadstring(code)
@@ -280,7 +271,6 @@ local function launchScript(lang, chosenBtn)
             warn("[Material3] Ошибка компиляции: " .. tostring(err))
         end
     end
-    -- =============================
 
     TweenService:Create(Main, TweenInfo.new(0.35, Enum.EasingStyle.Quint, Enum.EasingDirection.In), {
         Position = UDim2.new(0.5, -210, 1.5, 0)
@@ -298,7 +288,6 @@ BtnEN.MouseButton1Click:Connect(function()
     launchScript("en", BtnEN)
 end)
 
--- Перетаскивание
 local dragging, dragStart, startPos
 local header = Instance.new("TextButton")
 header.Size = UDim2.new(1, -60, 0, 90)
