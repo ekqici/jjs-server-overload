@@ -114,9 +114,7 @@ end
 local screenGui = create("ScreenGui", { Name = "AutoOverload", ResetOnSpawn = false, IgnoreGuiInset = true }, gethui())
 state.gui = screenGui
 
--- ============================================================
---  УВЕДОМЛЕНИЕ (Snackbar) — без тени
--- ============================================================
+
 local notice = create("Frame", {
 	Name = "Notice",
 	AnchorPoint = Vector2.new(0.5, 0),
@@ -142,7 +140,7 @@ local noticeIcon = create("TextLabel", {
 }, notice)
 round(noticeIcon, 14)
 
--- Текст уведомления
+
 local noticeText = create("TextLabel", {
 	Size = UDim2.new(1, -110, 1, 0),
 	Position = UDim2.new(0, 52, 0, 0),
@@ -154,7 +152,7 @@ local noticeText = create("TextLabel", {
 	TextXAlignment = Enum.TextXAlignment.Left,
 }, notice)
 
--- Крестик уведомления
+
 local noticeClose = create("TextButton", {
 	Size = UDim2.fromOffset(28, 28),
 	Position = UDim2.new(1, -40, 0.5, -14),
@@ -189,7 +187,7 @@ noticeClose.MouseButton1Click:Connect(function()
 	notice.Visible = false
 end)
 
--- Перетаскивание уведомления
+
 local noticeDragging, noticeDragStart, noticeStartPos = false, nil, nil
 
 noticeText.InputBegan:Connect(function(input)
@@ -219,9 +217,7 @@ table.insert(state.connections, userInputService.InputEnded:Connect(function(inp
 	end
 end))
 
--- ============================================================
---  ГЛАВНОЕ МЕНЮ — без тени
--- ============================================================
+
 local menu = create("Frame", {
 	Size = UDim2.fromOffset(320, 420),
 	Position = UDim2.new(0, 100, 0.5, -210),
@@ -282,7 +278,7 @@ closeButton.MouseLeave:Connect(function()
 	}):Play()
 end)
 
--- === Toggle M3 ===
+
 local function createToggle(text, positionY, initial, callback)
 	local row = create("Frame", {
 		Size = UDim2.new(1, -32, 0, 56),
