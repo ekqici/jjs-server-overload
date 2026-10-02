@@ -16,7 +16,7 @@ local MyScripts = {
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ekqici/jjs-server-overload/refs/heads/main/overloadrus.lua"))()
     ]],
     en = [[
-        
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ekqici/jjs-server-overload/refs/heads/main/overloadeng.lua"))()
     ]],
 }
 
